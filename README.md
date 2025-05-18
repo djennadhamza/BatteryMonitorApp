@@ -19,7 +19,7 @@ There is no documentation available for this project at this moment.
   * `.NET Core cross platform development` workload
   * `32 feet module package` workload
 
-The built VSIX will work with Visual Studio 2015 or newer
+The built Apllication tested on Windows 10 and Windows 11.
 
 ## Build
 
