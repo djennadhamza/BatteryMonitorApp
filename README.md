@@ -28,7 +28,7 @@ Clone the repository and its submodules.
 
 ## Visual Studio Build
 
-Build `BatteryMonitorApp.sln` using Visual Studio 2019.
+Build `BatteryMonitorApp.sln` using Visual Studio 2022.
 
 
 ## Screenshots
@@ -55,7 +55,8 @@ Visit the [ESP32 DEV MODULE PROJECT](CONTRIBUTING.md) for details on how to code
   
   * go to the `BatteryMonitorApp` project and open the `Form1.cs` file go to `CheckBatteryThresholds` function and change the value to the desired message you want to send to the ESP32 module.
 ```bash
-     //uncomment this code 
+     //uncomment this code if you want to send the level of battery to the ESP32 modulewithin a complete message. 
+     //use %LEVEL% to replace the level of battery
      _notificationService.ShowNotification(
          "Battery Low",
           txtLowMessage.Text.Replace("%LEVEL%", status.BatteryLevel.ToString())
@@ -63,8 +64,9 @@ Visit the [ESP32 DEV MODULE PROJECT](CONTRIBUTING.md) for details on how to code
      //delete this 
      if (_communicationHandler != null) _communicationHandler.SendMessage("c");
      // add this
-     if (_communicationHandler != null) _communicationHandler.SendMessage(status.BatteryLevel.ToString());
+     if (_communicationHandler != null) _communicationHandler.SendMessage(txtLowMessage.Text);
 ```
+  * and do the same for high threshold. 
 
 ## Copyright
 
