@@ -53,7 +53,7 @@ Visit the [ESP32 DEV MODULE PROJECT](CONTRIBUTING.md) for details on how to code
 
 * if you want send the Level of battery to the ESP32 module, make sure you have the following:
   
-  * go to the `BatteryMonitorApp` project and open the `Form1.cs` file go to `CheckBatteryThresholds` function and change the value to the desired level of battery you want to send to the ESP32 module.
+  * go to the `BatteryMonitorApp` project and open the `Form1.cs` file go to `CheckBatteryThresholds` function and change the value to the desired message you want to send to the ESP32 module.
 ```bash
      //uncomment this code 
      _notificationService.ShowNotification(
