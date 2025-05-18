@@ -2,7 +2,7 @@
 
 ## About
 
-The battery monitor app is a simple application that allows you to `monitor` the battery status  and `control` the AC power of your laptop device. It provides information such as the current battery percentage, charging status,
+The battery monitor app is a simple application that allows you to `monitor` the battery status  and `control` the AC power of your laptop device via Bluetooth or serial communication. It provides information such as the current battery percentage, charging status,
 and send message to arduino ESP32 DEV module to control the AC power if `High` or `Low` threshold's reached .
 
 
@@ -34,9 +34,36 @@ Build `BatteryMonitorApp.sln` using Visual Studio 2019.
 ## Screenshots
 ![Alt text](screenshots/bmimg.jpg?raw=true "Optional Title")
 
-## Contributing
+## Arduino ESP32 DEV module Code
 
-Visit the [Contributor Guidelines](CONTRIBUTING.md) for details on how to contribute as well as the [Contributor Covenant Code of Conduct](CODE_OF_CONDUCT.md) for details on how to participate.
+Visit the [ESP32 DEV MODULE PROJECT](CONTRIBUTING.md) for details on how to code the ESP32 module.
+
+## features
+- Monitor battery status
+- Control AC power
+- Send messages to ESP32 module
+- bluetooth and serial communication
+- Low and High Threshold settings
+
+## troubleshooting
+* If you want to use the app with ESP32 module, make sure you have the following:
+  * ESP32 module connected to your laptop via USB or Bluetooth
+  * ESP32 module powered on
+  * ESP32 module configured with the correct code and settings
+
+* if you want send the Level of battery to the ESP32 module, make sure you have the following:
+  *go to the `BatteryMonitorApp` project and open the `Form1.cs` file go to `CheckBatteryThresholds` function and change the value to the desired level of battery you want to send to the ESP32 module.
+```bash
+     //uncomment this code 
+     _notificationService.ShowNotification(
+         "Battery Low",
+          txtLowMessage.Text.Replace("%LEVEL%", status.BatteryLevel.ToString())
+     );
+     //delete this 
+     if (_communicationHandler != null) _communicationHandler.SendMessage("c");
+     // add this
+     if (_communicationHandler != null) _communicationHandler.SendMessage(status.BatteryLevel.ToString());
+```
 
 ## Copyright
 
