@@ -24,6 +24,9 @@ namespace BatteryMonitorApp
         private string highThreshold = "";
         private string coms = "";
 
+        bool _isFirstStart = true;
+        int _restartCount = 0;
+
         bool _isSearchingForDevices;
         public bool IsSearchingForDevices
         {
@@ -106,10 +109,21 @@ namespace BatteryMonitorApp
             lblMountStatus.Text = status.IsMounted ? "Mounted" : "Not Mounted";
             lblChargingStatus.Text = status.IsCharging ? "Charging" : "Not Charging";
             UpdateConnectionStatus(status.IsConnected);
-            if (!status.IsConnected) 
+            if (!status.IsConnected && _isFirstStart && _restartCount == 0)
             {
-                _batteryService.BatteryStatusChanged -= OnBatteryStatusChanged;
-                restartApp();
+                _restartCount++;
+                DialogResult dialogResult = MessageBox.Show("The Application can not conntect to device,\r \n do you want to restart?", "Conection Error", MessageBoxButtons.YesNo);
+                
+                switch (dialogResult)
+                {
+                    case DialogResult.Yes:
+                        _batteryService.BatteryStatusChanged -= OnBatteryStatusChanged;
+                        restartApp();
+                        break;
+                    case DialogResult.No:
+                        _isFirstStart = false;
+                        break;
+                }
             }
         }
 
@@ -345,7 +359,7 @@ namespace BatteryMonitorApp
         private void restartApp()
         {
             string path = Directory.GetCurrentDirectory();
-            MessageBox.Show("Please Restart the Application!");
+            //MessageBox.Show("Please Restart the Application!");
             SystemEvents.PowerModeChanged -= OnPowerChange;
             Application.Exit();
             Process.Start("BatteryMonitorApp.exe", path + "BatteryMonitorApp.exe");
