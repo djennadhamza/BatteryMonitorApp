@@ -36,7 +36,7 @@ Build `BatteryMonitorApp.sln` using Visual Studio 2022.
 
 ## Arduino ESP32 DEV module Code
 
-Visit the [ESP32 DEV MODULE PROJECT](CONTRIBUTING.md) for details on how to code the ESP32 module.
+Visit the repo of [SerialToSerialBT](https://github.com/djennadhamza/arduino) for details on how to code the ESP32 module.
 
 ## features
 - Monitor battery status
