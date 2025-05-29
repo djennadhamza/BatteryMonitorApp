@@ -70,6 +70,7 @@ Visit the repo of [SerialToSerialBT](https://github.com/djennadhamza/arduino) fo
 
 ## Donnate 
 Please consider donating to support the development of this project. Your contributions will help us continue to improve and maintain open source applications.
+for further information visit us in our website [dev Rise Media](https://www.devrisemedia.com)
 ## Copyright
 
 Copyright 2019 - 2022 GitHub, Inc.
